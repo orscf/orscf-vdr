@@ -1,0 +1,31 @@
+{
+  "SubjectProfiles": [
+    {
+      "SubjectName": "(anonymous)",
+      "SubjectTitle": "(anonymous)",
+      "AllowedHosts": [ "*" ],
+      "DefaultApiPermissions": [ "VdrApiInfo" ]
+    },
+    {
+      "SubjectName": "(generic)",
+      "SubjectTitle": "(generic)",
+      "AllowedHosts": [ "*" ],
+      "DefaultApiPermissions": [ "VdrApiInfo" ]
+    },
+    {
+      "SubjectName": "(public)",
+      "SubjectTitle": "(public) OLD!!!",
+      "AllowedHosts": [ "*" ],
+      "DefaultApiPermissions": [ "VdrApiInfo" ]
+    }
+  ],
+  "IssuerProfiles": [
+    {
+      "IssuerName": "orscf",
+      "JwtSignKey": "innovate",
+      "Disabled": false
+    }
+  ],
+  "ApplyApiPermissionsFromJwtScope": true,
+  "ApplyDataAccessClearancesFromJwtScope": true
+}
