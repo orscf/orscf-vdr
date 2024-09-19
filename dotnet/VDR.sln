@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Showcase", "Showcase", "{6A81E32D-5215-4122-B841-D69A71B430C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitData.Connector", "src\Connector\VisitData.Connector.csproj", "{273FBFB9-3628-4D8C-8F40-A838C83E8EAD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitData.Contract", "src\Contract\VisitData.Contract.csproj", "{19996396-B967-45C0-B81D-7AAB53246D23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "(Modeling)", "src\EDMX\(Modeling).csproj", "{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitData.ShowcaseService", "src\ShowcaseService\VisitData.ShowcaseService.csproj", "{ED312DE7-A02C-491A-9782-BFF79B5A823C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitData.ShowcaseService.WebAPI", "src\ShowcaseService.WebAPI\VisitData.ShowcaseService.WebAPI.csproj", "{7A98F756-E6EC-4DFD-8D25-40343E7BE42C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitData.TestClient", "src\TestClient\VisitData.TestClient.csproj", "{9A9AF5D2-1638-4141-9400-E7E682439471}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Solution Items)", "(Solution Items)", "{FF243674-B08C-4AAC-A958-4E4DA6E88CCC}"
+	ProjectSection(SolutionItems) = preProject
+		..\vers\changelog.md = ..\vers\changelog.md
+		ORSCF.VisitData.Contract.nuspec = ORSCF.VisitData.Contract.nuspec
+		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{273FBFB9-3628-4D8C-8F40-A838C83E8EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273FBFB9-3628-4D8C-8F40-A838C83E8EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273FBFB9-3628-4D8C-8F40-A838C83E8EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273FBFB9-3628-4D8C-8F40-A838C83E8EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19996396-B967-45C0-B81D-7AAB53246D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19996396-B967-45C0-B81D-7AAB53246D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19996396-B967-45C0-B81D-7AAB53246D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19996396-B967-45C0-B81D-7AAB53246D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED312DE7-A02C-491A-9782-BFF79B5A823C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED312DE7-A02C-491A-9782-BFF79B5A823C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED312DE7-A02C-491A-9782-BFF79B5A823C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED312DE7-A02C-491A-9782-BFF79B5A823C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A98F756-E6EC-4DFD-8D25-40343E7BE42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A98F756-E6EC-4DFD-8D25-40343E7BE42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A98F756-E6EC-4DFD-8D25-40343E7BE42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A98F756-E6EC-4DFD-8D25-40343E7BE42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9AF5D2-1638-4141-9400-E7E682439471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9AF5D2-1638-4141-9400-E7E682439471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9AF5D2-1638-4141-9400-E7E682439471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9AF5D2-1638-4141-9400-E7E682439471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED312DE7-A02C-491A-9782-BFF79B5A823C} = {6A81E32D-5215-4122-B841-D69A71B430C8}
+		{7A98F756-E6EC-4DFD-8D25-40343E7BE42C} = {6A81E32D-5215-4122-B841-D69A71B430C8}
+		{9A9AF5D2-1638-4141-9400-E7E682439471} = {6A81E32D-5215-4122-B841-D69A71B430C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {174839FD-71CD-40F0-9F70-CAE01B1C345A}
+	EndGlobalSection
+EndGlobal
