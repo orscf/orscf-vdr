@@ -1,39 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>MedicalResearch.VisitData</RootNamespace>
     <AssemblyName>ORSCF.VisitData.Contract</AssemblyName>
-    <Version>1.9.1</Version>
+    <Version>2.0.0</Version>
     <Authors>ORSCF.org</Authors>
     <Company>ORSCF.org</Company>
     <Copyright>ORSCF.org</Copyright>
     <Product>Open Research Study Communication Format</Product>
-    <AssemblyVersion>1.9.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\(Stage)\Bin</OutputPath>
-    <DocumentationFile>..\..\(Stage)\Bin\ORSCF.VisitData.Contract.xml</DocumentationFile>
+    <OutputPath>..\..\dist\bin-net6.0</OutputPath>
+    <DocumentationFile>..\..\dist\bin-net6.0\ORSCF.VisitData.Contract.xml</DocumentationFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Deterministic>false</Deterministic>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\(Stage)\Bin</OutputPath>
-    <DocumentationFile>..\..\(Stage)\Bin\ORSCF.VisitData.Contract.xml</DocumentationFile>
+    <OutputPath>..\..\dist\bin-net6.0</OutputPath>
+    <DocumentationFile>..\..\dist\bin-net6.0\ORSCF.VisitData.Contract.xml</DocumentationFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Deterministic>false</Deterministic>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityAnnotations" Version="2.2.0.423" />
-    <PackageReference Include="Hl7.Fhir.R4" Version="3.5.0" />
+    <PackageReference Include="FUSE-fx.EntityAnnotations" Version="4.0.3" />
+    <PackageReference Include="FUSE-fx.RepositoryContract" Version="0.3.16" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="v1\Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Models.Generated.cs</LastGenOutput>
+    </None>
+    <None Update="v1\RepoInterfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepoInterfaces.Generated.cs</LastGenOutput>
+    </None>
     <None Update="v1\[API]\VdrServices.md">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -43,14 +51,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>VdrServices.md</LastGenOutput>
     </None>
-    <None Update="v1\Models\Models.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Models.Generated.cs</LastGenOutput>
-    </None>
-    <None Update="v1\StoreAccess\RepoInterfaces.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RepoInterfaces.Generated.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -58,20 +58,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="v1\Models\Models.Generated.cs">
+    <Folder Include="v1\[API]\CapturedData\HL7\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="v1\Models.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Update="v1\StoreAccess\RepoInterfaces.Generated.cs">
+    <Compile Update="v1\RepoInterfaces.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>RepoInterfaces.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="v1\[API]\CapturedData\HL7\" />
   </ItemGroup>
 
 </Project>

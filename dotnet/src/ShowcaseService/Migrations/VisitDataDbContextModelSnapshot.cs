@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace MedicalResearch.VisitData.Migrations
 {
     [DbContext(typeof(VisitDataDbContext))]
@@ -15,9 +17,13 @@ namespace MedicalResearch.VisitData.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "7.0.20")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.DataRecordingEntity", b =>
                 {
@@ -67,7 +73,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasIndex("VisitGuid");
 
-                    b.ToTable("VdrDataRecordings");
+                    b.ToTable("VdrDataRecordings", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.DrugApplymentEntity", b =>
@@ -120,7 +126,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasIndex("VisitGuid");
 
-                    b.ToTable("VdrDrugApplyments");
+                    b.ToTable("VdrDrugApplyments", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.StudyEventEntity", b =>
@@ -157,7 +163,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasIndex("StudyExecutionIdentifier");
 
-                    b.ToTable("VdrStudyEvents");
+                    b.ToTable("VdrStudyEvents", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.StudyExecutionScopeEntity", b =>
@@ -185,7 +191,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasKey("StudyUid");
 
-                    b.ToTable("VdrStudyExecutionScopes");
+                    b.ToTable("VdrStudyExecutionScopes", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.TreatmentEntity", b =>
@@ -228,7 +234,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasIndex("VisitGuid");
 
-                    b.ToTable("VdrTreatments");
+                    b.ToTable("VdrTreatments", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.VisitEntity", b =>
@@ -272,7 +278,7 @@ namespace MedicalResearch.VisitData.Migrations
 
                     b.HasIndex("StudyUid");
 
-                    b.ToTable("VdrVisits");
+                    b.ToTable("VdrVisits", (string)null);
                 });
 
             modelBuilder.Entity("MedicalResearch.VisitData.Persistence.DataRecordingEntity", b =>

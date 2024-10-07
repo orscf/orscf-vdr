@@ -25,7 +25,7 @@ namespace TestClient {
 
     private void FormMain_Load(object sender, EventArgs e) {
       try {
-        this.Text = this.Text.Replace("{V}" , typeof(IVisits).Assembly.GetName().Version.ToString(3));
+        this.Text = this.Text.Replace("{V}" , typeof(IVisitStore).Assembly.GetName().Version.ToString(3));
         this.InitModelClasses();
         this.LoadProfiles();
       }
@@ -194,23 +194,23 @@ namespace TestClient {
     }
 
     private void gTxtUrl_TextChanged(object sender, EventArgs e) {
-      _CurrentConnector = null;
+      //_CurrentConnector = null;
     }
 
     private void gTxtToken_TextChanged(object sender, EventArgs e) {
-      _CurrentConnector = null;
+      //_CurrentConnector = null;
     }
 
     #endregion
 
-    private VdrApiConnector _CurrentConnector = null;
+    //private VdrApiConnector _CurrentConnector = null;
 
-    private VdrApiConnector GetOrCreateCurrentConnector() {
-      if(_CurrentConnector == null) {
-        _CurrentConnector = new VdrApiConnector(gTxtUrl.Text, gTxtToken.Text);
-      }
-      return _CurrentConnector;
-    }
+    //private VdrApiConnector GetOrCreateCurrentConnector() {
+    //  if(_CurrentConnector == null) {
+    //    _CurrentConnector = new VdrApiConnector(gTxtUrl.Text, gTxtToken.Text);
+    //  }
+    //  return _CurrentConnector;
+    //}
 
     private void LoadProfiles() {
       gCboProfile.Items.Clear();

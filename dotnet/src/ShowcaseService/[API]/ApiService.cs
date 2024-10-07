@@ -1,5 +1,4 @@
-﻿using Security;
-using System;
+﻿using System;
 using System.Data.AccessControl;
 using System.Linq;
 
@@ -29,12 +28,15 @@ namespace MedicalResearch.VisitData {
     }
 
     public string[] GetPermittedAuthScopes(out int authState) {
-      var mac = AccessControlContext.Current;
+      //var mac = AccessControlContext.Current;
 
-      string[] scopes = mac.EffectivePermissions.Select(p => "API:" + p).Union(mac.ExportClearences()).ToArray();
-      authState = mac.AuthStateCode;
+      //string[] scopes = mac.EffectivePermissions.Select(p => "API:" + p).Union(mac.ExportClearences()).ToArray();
+      //authState = mac.AuthStateCode;
 
-      return scopes;
+      //return scopes;
+
+      authState = 0;
+      return new string[] { };
     }
 
   }

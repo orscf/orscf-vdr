@@ -17,6 +17,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Writers;
 using MedicalResearch.VisitData.Model;
 using Security.AccessTokenHandling;
+using System.Web.UJMW;
 
 namespace MedicalResearch.VisitData.WebAPI {
 
@@ -55,7 +56,6 @@ namespace MedicalResearch.VisitData.WebAPI {
       );
       services.AddSingleton<IVdrApiInfoService>(apiService);
       services.AddSingleton<IVdrEventSubscriptionService>(apiService);
-
       services.AddSingleton<IVisitConsumeService>(apiService);
       services.AddSingleton<IVisitSubmissionService>(apiService);
       services.AddSingleton<IVisitHL7ExportService>(apiService);
@@ -63,13 +63,33 @@ namespace MedicalResearch.VisitData.WebAPI {
       services.AddSingleton<IDataEnrollmentService>(apiService);
       services.AddSingleton<IDataRecordingSubmissionService>(apiService);
 
-      services.AddControllers();
+      services.AddSingleton<IDataRecordingStore>(new DataRecordingStore());
+      services.AddSingleton<IVisitStore>(new VisitStore());
+      services.AddSingleton<IDrugApplymentStore>(new DrugApplymentStore());
+      services.AddSingleton<IStudyEventStore>(new StudyEventStore());
+      services.AddSingleton<IStudyExecutionScopeStore>(new StudyExecutionScopeStore());
+      services.AddSingleton<ITreatmentStore>(new TreatmentStore());
+
+      services.AddDynamicUjmwControllers(
+        (c) => {
+
+          c.AddControllerFor<IVdrApiInfoService>("vdr/v2/VdrApiInfo");
+
+          c.AddControllerFor<IDataRecordingStore>("vdr/v2/store/DataRecordings");
+          c.AddControllerFor<IVisitStore>("vdr/v2/store/Visits");
+          c.AddControllerFor<IDrugApplymentStore>("vdr/v2/store/DrugApplyments");
+          c.AddControllerFor<IStudyEventStore>("vdr/v2/store/StudyEvents");
+          c.AddControllerFor<IStudyExecutionScopeStore>("vdr/v2/store/StudyExecutionScopes");
+          c.AddControllerFor<ITreatmentStore>("vdr/v2/store/Treatments");
+
+        }
+      );
 
       services.AddSwaggerGen(c => {
         
         c.EnableAnnotations(true, true);
 
-        c.IncludeXmlComments(outDir + "Hl7.Fhir.R4.Core.xml", true);
+        c.IncludeXmlComments(outDir + "Hl7.Fhir.R4.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Contract.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Service.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Service.WebAPI.xml", true);
@@ -153,16 +173,16 @@ namespace MedicalResearch.VisitData.WebAPI {
         app.UseDeveloperExceptionPage();
       }
 
-      string validateTokensVia = _Configuration.GetValue<string>("ValidateTokensVia");
-      if (validateTokensVia.StartsWith("http")) {
-        DefaultAccessTokenValidator.Instance = new ValidationServiceConnector(
-          validateTokensVia,
-          _Configuration.GetValue<string>("ValidationServiceConnectorToken")
-        ).AccessTokenValidator;
-      }
-      else {
-        DefaultAccessTokenValidator.Instance = new RulesetBasedAccessTokenValidator(validateTokensVia);
-      }
+      //string validateTokensVia = _Configuration.GetValue<string>("ValidateTokensVia");
+      //if (validateTokensVia.StartsWith("http")) {
+      //  DefaultAccessTokenValidator.Instance = new ValidationServiceConnector(
+      //    validateTokensVia,
+      //    _Configuration.GetValue<string>("ValidationServiceConnectorToken")
+      //  ).AccessTokenValidator;
+      //}
+      //else {
+      //  DefaultAccessTokenValidator.Instance = new RulesetBasedAccessTokenValidator(validateTokensVia);
+      //}
 
       if (_Configuration.GetValue<bool>("EnableSwaggerUi")) {
         var baseUrl = _Configuration.GetValue<string>("BaseUrl");
