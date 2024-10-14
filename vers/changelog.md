@@ -8,8 +8,16 @@ This files contains a version history including all changes relevant for semanti
 
 ## Upcoming Changes
 
-* Renamae UniqueExecutionName
-* 
+*(none)*
+
+
+
+## v 2.0.1
+released **2024-10-14**, including:
+ - *
+ - Renamae UniqueExecutionName
+
+
 
 ## v 2.0.0
 released **2024-10-07**, including:
