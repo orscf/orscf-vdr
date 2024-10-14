@@ -5,7 +5,7 @@
 |author:   |[ORSCF](https://www.orscf.org) ("Open Research Study Communication Formats") / T.Korn|
 |license:  |[Apache-2](https://choosealicense.com/licenses/apache-2.0/)|
 |version:  |1.5.0|
-|timestamp:|2022-01-23 00:00|
+|timestamp:|2024-10-13 00:00|
 
 ### Contents
 
@@ -163,7 +163,7 @@ Target: [Visit](#Visit)
 | [ParticipantIdentifier](#VisitParticipantIdentifier-Field) | *string* (50) | YES | YES |
 | [StudyUid](#VisitStudyUid-Field) (FK) | *guid* | YES | no |
 | [VisitProcedureName](#VisitVisitProcedureName-Field) | *string* | YES | no |
-| [VisitExecutionTitle](#VisitVisitExecutionTitle-Field) | *string* | YES | no |
+| [UniqueExecutionName](#VisitUniqueExecutionName-Field) | *string* | YES | no |
 | [ScheduledDateUtc](#VisitScheduledDateUtc-Field) | *datetime* | no | no |
 | [ExecutionDateUtc](#VisitExecutionDateUtc-Field) | *datetime* | no | no |
 | [ExecutionState](#VisitExecutionState-Field) | *int32* | YES | no |
@@ -171,7 +171,7 @@ Target: [Visit](#Visit)
 | [ExecutingPerson](#VisitExecutingPerson-Field) | *string* | no | no |
 #### Unique Keys
 * VisitGuid **(primary)**
-* ParticipantIdentifier + StudyUid + VisitExecutionTitle
+* ParticipantIdentifier + StudyUid + UniqueExecutionName
 
 #### Visit.**VisitGuid** (Field)
 
@@ -198,7 +198,7 @@ a global unique id of a concrete study execution (dedicated to a concrete instit
 unique invariant name of the visit-procedure as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
 
-#### Visit.**VisitExecutionTitle** (Field)
+#### Visit.**UniqueExecutionName** (Field)
 
 unique title of the visit execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
@@ -271,7 +271,7 @@ all the treatments which have been executed for this visit
 | [TaskGuid](#DataRecordingTaskGuid-Field) **(PK)** | *guid* | YES | YES |
 | [VisitGuid](#DataRecordingVisitGuid-Field) (FK) | *guid* | YES | no |
 | [DataRecordingName](#DataRecordingDataRecordingName-Field) | *string* | YES | no |
-| [TaskExecutionTitle](#DataRecordingTaskExecutionTitle-Field) | *string* | YES | no |
+| [UniqueExecutionName](#DataRecordingUniqueExecutionName-Field) | *string* | YES | no |
 | [ScheduledDateTimeUtc](#DataRecordingScheduledDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionDateTimeUtc](#DataRecordingExecutionDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionState](#DataRecordingExecutionState-Field) | *int32* | YES | no |
@@ -301,7 +301,7 @@ the guid of the visit in which this task was executed
 unique invariant name of ths task-procedure as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
 
-#### DataRecording.**TaskExecutionTitle** (Field)
+#### DataRecording.**UniqueExecutionName** (Field)
 
 title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
@@ -371,7 +371,7 @@ Addressed by: [VisitGuid](#DataRecordingVisitGuid-Field).
 | [TaskGuid](#DrugApplymentTaskGuid-Field) **(PK)** | *guid* | YES | YES |
 | [VisitGuid](#DrugApplymentVisitGuid-Field) (FK) | *guid* | YES | no |
 | [DrugApplymentName](#DrugApplymentDrugApplymentName-Field) | *string* | YES | no |
-| [TaskExecutionTitle](#DrugApplymentTaskExecutionTitle-Field) | *string* | YES | no |
+| [UniqueExecutionName](#DrugApplymentUniqueExecutionName-Field) | *string* | YES | no |
 | [ScheduledDateTimeUtc](#DrugApplymentScheduledDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionDateTimeUtc](#DrugApplymentExecutionDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionState](#DrugApplymentExecutionState-Field) | *int32* | YES | no |
@@ -402,7 +402,7 @@ the guid of the visit in which this task was executed
 unique invariant name of the study itself as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
 
-#### DrugApplyment.**TaskExecutionTitle** (Field)
+#### DrugApplyment.**UniqueExecutionName** (Field)
 
 title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
@@ -477,7 +477,7 @@ Addressed by: [VisitGuid](#DrugApplymentVisitGuid-Field).
 | [TaskGuid](#TreatmentTaskGuid-Field) **(PK)** | *guid* | YES | YES |
 | [VisitGuid](#TreatmentVisitGuid-Field) (FK) | *guid* | YES | no |
 | [TreatmentName](#TreatmentTreatmentName-Field) | *string* | YES | no |
-| [TaskExecutionTitle](#TreatmentTaskExecutionTitle-Field) | *string* | YES | no |
+| [UniqueExecutionName](#TreatmentUniqueExecutionName-Field) | *string* | YES | no |
 | [ScheduledDateTimeUtc](#TreatmentScheduledDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionDateTimeUtc](#TreatmentExecutionDateTimeUtc-Field) | *datetime* | no | no |
 | [ExecutionState](#TreatmentExecutionState-Field) | *int32* | YES | no |
@@ -505,7 +505,7 @@ the guid of the visit in which this task was executed
 unique invariant name of ths task-procedure as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 
 
-#### Treatment.**TaskExecutionTitle** (Field)
+#### Treatment.**UniqueExecutionName** (Field)
 
 title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)
 

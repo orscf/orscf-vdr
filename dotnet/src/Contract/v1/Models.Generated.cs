@@ -21,7 +21,7 @@ public class DataRecording {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated date when the visit is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }
@@ -73,7 +73,7 @@ public class Visit {
 
   /// <summary> unique title of the visit execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String VisitExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated date when the visit is scheduled for execution *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateUtc { get; set; }
@@ -109,7 +109,7 @@ public class DrugApplyment {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated time when the drug applyment is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }
@@ -216,7 +216,7 @@ public class Treatment {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated time when the treatment is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }

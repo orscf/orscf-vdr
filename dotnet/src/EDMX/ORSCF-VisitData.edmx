@@ -62,7 +62,7 @@
               <LongDescription>IX2</LongDescription>
             </Documentation>
           </Property>
-          <Property Name="TaskExecutionTitle" Type="String" Nullable="false" >
+          <Property Name="UniqueExecutionName" Type="String" Nullable="false" >
             <Documentation>
               <Summary>title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)</Summary>
               <LongDescription>IX1</LongDescription>
@@ -127,7 +127,7 @@
               <LongDescription>IX2</LongDescription>
             </Documentation>
           </Property>
-          <Property Name="TaskExecutionTitle" Type="String" Nullable="false" >
+          <Property Name="UniqueExecutionName" Type="String" Nullable="false" >
             <Documentation>
               <Summary>title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)</Summary>
               <LongDescription>IX1</LongDescription>
@@ -197,7 +197,7 @@
               <LongDescription>IX2</LongDescription>
             </Documentation>
           </Property>
-          <Property Name="TaskExecutionTitle" Type="String" Nullable="false" >
+          <Property Name="UniqueExecutionName" Type="String" Nullable="false" >
             <Documentation>
               <Summary>title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)</Summary>
               <LongDescription>IX1</LongDescription>
@@ -258,7 +258,7 @@
               <LongDescription>IX2</LongDescription>
             </Documentation>
           </Property>
-          <Property Name="VisitExecutionTitle" Type="String" Nullable="false" >
+          <Property Name="UniqueExecutionName" Type="String" Nullable="false" >
             <Documentation>
               <Summary>unique title of the visit execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)</Summary>
               <LongDescription>IX3, UQ1</LongDescription>

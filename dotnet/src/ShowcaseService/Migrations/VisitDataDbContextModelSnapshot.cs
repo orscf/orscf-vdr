@@ -62,7 +62,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -115,7 +115,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -219,11 +219,11 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("TreatmentName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TreatmentName")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -266,7 +266,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<Guid>("StudyUid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("VisitExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

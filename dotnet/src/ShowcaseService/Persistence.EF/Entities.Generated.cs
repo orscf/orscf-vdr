@@ -22,7 +22,7 @@ public class DataRecordingEntity {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated date when the visit is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }
@@ -61,7 +61,7 @@ public class DataRecordingEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     DataRecordingName = src.DataRecordingName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -76,7 +76,7 @@ public class DataRecordingEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     DataRecordingName = src.DataRecordingName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -95,7 +95,7 @@ public class DataRecordingEntity {
     }
     this.VisitGuid = source.VisitGuid;
     this.DataRecordingName = source.DataRecordingName;
-    this.TaskExecutionTitle = source.TaskExecutionTitle;
+    this.UniqueExecutionName = source.UniqueExecutionName;
     this.ScheduledDateTimeUtc = source.ScheduledDateTimeUtc;
     this.ExecutionDateTimeUtc = source.ExecutionDateTimeUtc;
     this.ExecutionState = source.ExecutionState;
@@ -114,7 +114,7 @@ public class DataRecordingEntity {
     }
     target.VisitGuid = this.VisitGuid;
     target.DataRecordingName = this.DataRecordingName;
-    target.TaskExecutionTitle = this.TaskExecutionTitle;
+    target.UniqueExecutionName = this.UniqueExecutionName;
     target.ScheduledDateTimeUtc = this.ScheduledDateTimeUtc;
     target.ExecutionDateTimeUtc = this.ExecutionDateTimeUtc;
     target.ExecutionState = this.ExecutionState;
@@ -149,7 +149,7 @@ public class VisitEntity {
 
   /// <summary> unique title of the visit execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String VisitExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated date when the visit is scheduled for execution *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateUtc { get; set; }
@@ -186,7 +186,7 @@ public class VisitEntity {
     ParticipantIdentifier = src.ParticipantIdentifier,
     StudyUid = src.StudyUid,
     VisitProcedureName = src.VisitProcedureName,
-    VisitExecutionTitle = src.VisitExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateUtc = src.ScheduledDateUtc,
     ExecutionDateUtc = src.ExecutionDateUtc,
     ExecutionState = src.ExecutionState,
@@ -199,7 +199,7 @@ public class VisitEntity {
     ParticipantIdentifier = src.ParticipantIdentifier,
     StudyUid = src.StudyUid,
     VisitProcedureName = src.VisitProcedureName,
-    VisitExecutionTitle = src.VisitExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateUtc = src.ScheduledDateUtc,
     ExecutionDateUtc = src.ExecutionDateUtc,
     ExecutionState = src.ExecutionState,
@@ -220,7 +220,7 @@ public class VisitEntity {
     }
     this.StudyUid = source.StudyUid;
     this.VisitProcedureName = source.VisitProcedureName;
-    this.VisitExecutionTitle = source.VisitExecutionTitle;
+    this.UniqueExecutionName = source.UniqueExecutionName;
     this.ScheduledDateUtc = source.ScheduledDateUtc;
     this.ExecutionDateUtc = source.ExecutionDateUtc;
     this.ExecutionState = source.ExecutionState;
@@ -241,7 +241,7 @@ public class VisitEntity {
     }
     target.StudyUid = this.StudyUid;
     target.VisitProcedureName = this.VisitProcedureName;
-    target.VisitExecutionTitle = this.VisitExecutionTitle;
+    target.UniqueExecutionName = this.UniqueExecutionName;
     target.ScheduledDateUtc = this.ScheduledDateUtc;
     target.ExecutionDateUtc = this.ExecutionDateUtc;
     target.ExecutionState = this.ExecutionState;
@@ -269,7 +269,7 @@ public class DrugApplymentEntity {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated time when the drug applyment is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }
@@ -312,7 +312,7 @@ public class DrugApplymentEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     DrugApplymentName = src.DrugApplymentName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -328,7 +328,7 @@ public class DrugApplymentEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     DrugApplymentName = src.DrugApplymentName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -348,7 +348,7 @@ public class DrugApplymentEntity {
     }
     this.VisitGuid = source.VisitGuid;
     this.DrugApplymentName = source.DrugApplymentName;
-    this.TaskExecutionTitle = source.TaskExecutionTitle;
+    this.UniqueExecutionName = source.UniqueExecutionName;
     this.ScheduledDateTimeUtc = source.ScheduledDateTimeUtc;
     this.ExecutionDateTimeUtc = source.ExecutionDateTimeUtc;
     this.ExecutionState = source.ExecutionState;
@@ -368,7 +368,7 @@ public class DrugApplymentEntity {
     }
     target.VisitGuid = this.VisitGuid;
     target.DrugApplymentName = this.DrugApplymentName;
-    target.TaskExecutionTitle = this.TaskExecutionTitle;
+    target.UniqueExecutionName = this.UniqueExecutionName;
     target.ScheduledDateTimeUtc = this.ScheduledDateTimeUtc;
     target.ExecutionDateTimeUtc = this.ExecutionDateTimeUtc;
     target.ExecutionState = this.ExecutionState;
@@ -580,7 +580,7 @@ public class TreatmentEntity {
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
   [Required]
-  public String TaskExecutionTitle { get; set; }
+  public String UniqueExecutionName { get; set; }
 
   /// <summary> the estimated time when the treatment is scheduled *this field is optional </summary>
   public Nullable<DateTime> ScheduledDateTimeUtc { get; set; }
@@ -611,7 +611,7 @@ public class TreatmentEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     TreatmentName = src.TreatmentName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -624,7 +624,7 @@ public class TreatmentEntity {
     TaskGuid = src.TaskGuid,
     VisitGuid = src.VisitGuid,
     TreatmentName = src.TreatmentName,
-    TaskExecutionTitle = src.TaskExecutionTitle,
+    UniqueExecutionName = src.UniqueExecutionName,
     ScheduledDateTimeUtc = src.ScheduledDateTimeUtc,
     ExecutionDateTimeUtc = src.ExecutionDateTimeUtc,
     ExecutionState = src.ExecutionState,
@@ -641,7 +641,7 @@ public class TreatmentEntity {
     }
     this.VisitGuid = source.VisitGuid;
     this.TreatmentName = source.TreatmentName;
-    this.TaskExecutionTitle = source.TaskExecutionTitle;
+    this.UniqueExecutionName = source.UniqueExecutionName;
     this.ScheduledDateTimeUtc = source.ScheduledDateTimeUtc;
     this.ExecutionDateTimeUtc = source.ExecutionDateTimeUtc;
     this.ExecutionState = source.ExecutionState;
@@ -658,7 +658,7 @@ public class TreatmentEntity {
     }
     target.VisitGuid = this.VisitGuid;
     target.TreatmentName = this.TreatmentName;
-    target.TaskExecutionTitle = this.TaskExecutionTitle;
+    target.UniqueExecutionName = this.UniqueExecutionName;
     target.ScheduledDateTimeUtc = this.ScheduledDateTimeUtc;
     target.ExecutionDateTimeUtc = this.ExecutionDateTimeUtc;
     target.ExecutionState = this.ExecutionState;

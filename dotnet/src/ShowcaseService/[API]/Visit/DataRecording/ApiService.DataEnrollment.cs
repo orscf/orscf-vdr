@@ -35,7 +35,7 @@ namespace MedicalResearch.VisitData {
         var dr = new DataRecordingEntity();
         dr.TaskGuid = newRecordId;
         dr.VisitGuid = targetVisit.VisitGuid;
-        dr.TaskExecutionTitle = taskExecutionTitle;
+        dr.UniqueExecutionName = taskExecutionTitle;
         dr.DataRecordingName = "??";
         dr.ExecutionState = 2;
         dr.ExecutionDateTimeUtc = executionDateTimeUtc;
@@ -66,7 +66,7 @@ namespace MedicalResearch.VisitData {
         var targetVisit = db.Visits.Where(
           (v) => v.ParticipantIdentifier == subjectIdentifier && 
           v.StudyUid == studyUid && 
-          v.VisitExecutionTitle == visitExecutionTitle
+          v.UniqueExecutionName == visitExecutionTitle
         ).SingleOrDefault();
 
         if (targetVisit == null) {
@@ -74,7 +74,7 @@ namespace MedicalResearch.VisitData {
           targetVisit.VisitGuid = Guid.NewGuid();
           targetVisit.StudyUid = studyUid;
           targetVisit.ParticipantIdentifier = subjectIdentifier;
-          targetVisit.VisitExecutionTitle = visitExecutionTitle;
+          targetVisit.UniqueExecutionName = visitExecutionTitle;
           targetVisit.VisitProcedureName = "?";
           targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
           targetVisit.ExecutionState = 2;
@@ -92,7 +92,7 @@ namespace MedicalResearch.VisitData {
         var dr = new DataRecordingEntity();
         dr.TaskGuid = newRecordId;
         dr.VisitGuid = targetVisit.VisitGuid;
-        dr.TaskExecutionTitle = taskExecutionTitle;
+        dr.UniqueExecutionName = taskExecutionTitle;
         dr.DataRecordingName = "??";
         dr.ExecutionState = 2 ;
         dr.ExecutionDateTimeUtc = executionDateTimeUtc;

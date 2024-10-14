@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalResearch.VisitData.Migrations
 {
     [DbContext(typeof(VisitDataDbContext))]
-    [Migration("20241007131955_V001")]
+    [Migration("20241014153849_V001")]
     partial class V001
     {
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -118,7 +118,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -222,11 +222,11 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<DateTime?>("ScheduledDateTimeUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TaskExecutionTitle")
+                    b.Property<string>("TreatmentName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TreatmentName")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -269,7 +269,7 @@ namespace MedicalResearch.VisitData.Migrations
                     b.Property<Guid>("StudyUid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("VisitExecutionTitle")
+                    b.Property<string>("UniqueExecutionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

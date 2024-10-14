@@ -1,6 +1,6 @@
 {
   "DescriptionFormat": "v1.0",
-  "TimestampUtc": "2024-09-15T00:00:00.0000000Z",
+  "TimestampUtc": "2024-10-13T00:00:00.0000000Z",
   "SemanticVersion": "1.5.0",
   "Entities": [
     {
@@ -26,10 +26,10 @@
           ]
         },
         {
-          "Name": "IX_DataRecordings_TaskExecutionTitle",
+          "Name": "IX_DataRecordings_UniqueExecutionName",
           "Unique": false,
           "MemberFieldNames": [
-            "TaskExecutionTitle"
+            "UniqueExecutionName"
           ]
         },
         {
@@ -87,7 +87,7 @@
           "DbGeneratedIdentity": false
         },
         {
-          "Name": "TaskExecutionTitle",
+          "Name": "UniqueExecutionName",
           "Type": "String",
           "MaxLength": 0,
           "Summary": "title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)",
@@ -254,12 +254,12 @@
           ]
         },
         {
-          "Name": "UQ_Visits_ParticipantIdentifier_StudyUid_VisitExecutionTitle",
+          "Name": "UQ_Visits_ParticipantIdentifier_StudyUid_UniqueExecutionName",
           "Unique": true,
           "MemberFieldNames": [
             "ParticipantIdentifier",
             "StudyUid",
-            "VisitExecutionTitle"
+            "UniqueExecutionName"
           ]
         },
         {
@@ -271,11 +271,11 @@
           ]
         },
         {
-          "Name": "IX_Visits_StudyUid_VisitExecutionTitle",
+          "Name": "IX_Visits_StudyUid_UniqueExecutionName",
           "Unique": false,
           "MemberFieldNames": [
             "StudyUid",
-            "VisitExecutionTitle"
+            "UniqueExecutionName"
           ]
         }
       ],
@@ -341,7 +341,7 @@
           "DbGeneratedIdentity": false
         },
         {
-          "Name": "VisitExecutionTitle",
+          "Name": "UniqueExecutionName",
           "Type": "String",
           "MaxLength": 0,
           "Summary": "unique title of the visit execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)",
@@ -455,10 +455,10 @@
           ]
         },
         {
-          "Name": "IX_DrugApplyments_TaskExecutionTitle",
+          "Name": "IX_DrugApplyments_UniqueExecutionName",
           "Unique": false,
           "MemberFieldNames": [
-            "TaskExecutionTitle"
+            "UniqueExecutionName"
           ]
         },
         {
@@ -516,7 +516,7 @@
           "DbGeneratedIdentity": false
         },
         {
-          "Name": "TaskExecutionTitle",
+          "Name": "UniqueExecutionName",
           "Type": "String",
           "MaxLength": 0,
           "Summary": "title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)",
@@ -952,10 +952,10 @@
           ]
         },
         {
-          "Name": "IX_Treatments_TaskExecutionTitle",
+          "Name": "IX_Treatments_UniqueExecutionName",
           "Unique": false,
           "MemberFieldNames": [
-            "TaskExecutionTitle"
+            "UniqueExecutionName"
           ]
         },
         {
@@ -1013,7 +1013,7 @@
           "DbGeneratedIdentity": false
         },
         {
-          "Name": "TaskExecutionTitle",
+          "Name": "UniqueExecutionName",
           "Type": "String",
           "MaxLength": 0,
           "Summary": "title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor)",
