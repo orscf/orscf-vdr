@@ -135,7 +135,9 @@ namespace MedicalResearch.VisitData.Persistence {
 
   [PrimaryIdentity(nameof(VisitGuid))]
   [PropertyGroup(nameof(VisitGuid), nameof(VisitGuid))]
-  [PropertyGroup("Search", nameof(VisitProcedureName), nameof(UniqueExecutionName), nameof(ExecutingPerson))] 
+  [PropertyGroup("Search", nameof(VisitProcedureName), nameof(UniqueExecutionName), nameof(ExecutingPerson))]
+  [PropertyGroup(nameof(StudyUid), nameof(StudyUid))]
+  [HasLookup("", nameof(StudyUid), "", null, nameof(StudyExecutionScopeEntity))]
   public class VisitEntity {
 
   /// <summary> a global unique id of a concrete study-visit execution which is usually originated at the primary CRF or study management system ('SMS') </summary>
@@ -478,7 +480,9 @@ public class StudyEventEntity {
 
 }
 
-public class StudyExecutionScopeEntity {
+  [PrimaryIdentity(nameof(StudyUid))]
+  [PropertyGroup(nameof(StudyUid), nameof(StudyUid))]
+  public class StudyExecutionScopeEntity {
 
   /// <summary> a global unique id of a concrete study execution (dedicated to a concrete institute) which is usually originated at the primary CRF or study management system ('SMS') </summary>
   [FixedAfterCreation, Required]
