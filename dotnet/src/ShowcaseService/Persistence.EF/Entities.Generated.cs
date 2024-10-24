@@ -6,7 +6,11 @@ using MedicalResearch.VisitData.Model;
 
 namespace MedicalResearch.VisitData.Persistence {
 
-public class DataRecordingEntity {
+  [PrimaryIdentity(nameof(TaskGuid))]
+  [PropertyGroup(nameof(TaskGuid), nameof(TaskGuid))]
+  [PropertyGroup(nameof(VisitGuid), nameof(VisitGuid))]
+  [HasPrincipal("", nameof(VisitGuid), "", null, nameof(VisitEntity))]
+  public class DataRecordingEntity {
 
   /// <summary> a global unique id of a concrete study-task execution which is usually originated at the primary CRF or study management system ('SMS') </summary>
   [FixedAfterCreation, Required]
@@ -17,7 +21,7 @@ public class DataRecordingEntity {
   public Guid VisitGuid { get; set; }
 
   /// <summary> unique invariant name of ths task-procedure as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
-  [Required]
+  [Required, IdentityLabel]
   public String DataRecordingName { get; set; }
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
@@ -129,7 +133,10 @@ public class DataRecordingEntity {
 
 }
 
-public class VisitEntity {
+  [PrimaryIdentity(nameof(VisitGuid))]
+  [PropertyGroup(nameof(VisitGuid), nameof(VisitGuid))]
+  [PropertyGroup("Search", nameof(VisitProcedureName), nameof(UniqueExecutionName), nameof(ExecutingPerson))] 
+  public class VisitEntity {
 
   /// <summary> a global unique id of a concrete study-visit execution which is usually originated at the primary CRF or study management system ('SMS') </summary>
   [FixedAfterCreation, Required]
@@ -253,7 +260,11 @@ public class VisitEntity {
 
 }
 
-public class DrugApplymentEntity {
+  [PrimaryIdentity(nameof(TaskGuid))]
+  [PropertyGroup(nameof(TaskGuid), nameof(TaskGuid))]
+  [PropertyGroup(nameof(VisitGuid), nameof(VisitGuid))]
+  [HasPrincipal("", nameof(VisitGuid), "", null, nameof(VisitEntity))]
+  public class DrugApplymentEntity {
 
   /// <summary> a global unique id of a concrete study-task execution which is usually originated at the primary CRF or study management system ('SMS') </summary>
   [FixedAfterCreation, Required]
@@ -264,7 +275,7 @@ public class DrugApplymentEntity {
   public Guid VisitGuid { get; set; }
 
   /// <summary> unique invariant name of the study itself as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
-  [Required]
+  [Required, IdentityLabel]
   public String DrugApplymentName { get; set; }
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
@@ -564,7 +575,11 @@ public class StudyExecutionScopeEntity {
 
 }
 
-public class TreatmentEntity {
+  [PrimaryIdentity(nameof(TaskGuid))]
+  [PropertyGroup(nameof(TaskGuid), nameof(TaskGuid))]
+  [PropertyGroup(nameof(VisitGuid), nameof(VisitGuid))]
+  [HasPrincipal("", nameof(VisitGuid), "", null, nameof(VisitEntity))]
+  public class TreatmentEntity {
 
   /// <summary> a global unique id of a concrete study-task execution which is usually originated at the primary CRF or study management system ('SMS') </summary>
   [FixedAfterCreation, Required]
@@ -575,7 +590,7 @@ public class TreatmentEntity {
   public Guid VisitGuid { get; set; }
 
   /// <summary> unique invariant name of ths task-procedure as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
-  [Required]
+  [Required, IdentityLabel]
   public String TreatmentName { get; set; }
 
   /// <summary> title of the task execution as defined in the 'StudyWorkflowDefinition' (originated from the sponsor) </summary>
