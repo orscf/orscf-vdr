@@ -3,6 +3,7 @@ using System;
 using System.Data.Fuse;
 using System.Data.Fuse.Convenience;
 using System.Data.Fuse.Ef;
+using System.Data.Fuse.Ef.InstanceManagement;
 
 namespace MedicalResearch.VisitData.StoreAccess {
 
@@ -10,8 +11,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class DataRecordingStore : ModelVsEntityRepository<DataRecording, MedicalResearch.VisitData.Persistence.DataRecordingEntity, Guid>, IDataRecordingStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.DataRecordingEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.DataRecordingEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.DataRecordingEntity, Guid>(dbContextInstanceProvider);
     }
 
     public DataRecordingStore() : base(
@@ -25,8 +28,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class VisitStore : ModelVsEntityRepository<Visit, MedicalResearch.VisitData.Persistence.VisitEntity, Guid>, IVisitStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.VisitEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.VisitEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.VisitEntity, Guid>(dbContextInstanceProvider);
     }
 
     public VisitStore() : base(
@@ -40,8 +45,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class DrugApplymentStore : ModelVsEntityRepository<DrugApplyment, MedicalResearch.VisitData.Persistence.DrugApplymentEntity, Guid>, IDrugApplymentStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.DrugApplymentEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.DrugApplymentEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.DrugApplymentEntity, Guid>(dbContextInstanceProvider);
     }
 
     public DrugApplymentStore() : base(
@@ -55,8 +62,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class StudyEventStore : ModelVsEntityRepository<StudyEvent, MedicalResearch.VisitData.Persistence.StudyEventEntity, Guid>, IStudyEventStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.StudyEventEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.StudyEventEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.StudyEventEntity, Guid>(dbContextInstanceProvider);
     }
 
     public StudyEventStore() : base(
@@ -70,8 +79,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class StudyExecutionScopeStore : ModelVsEntityRepository<StudyExecutionScope, MedicalResearch.VisitData.Persistence.StudyExecutionScopeEntity, Guid>, IStudyExecutionScopeStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.StudyExecutionScopeEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.StudyExecutionScopeEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.StudyExecutionScopeEntity, Guid>(dbContextInstanceProvider);
     }
 
     public StudyExecutionScopeStore() : base(
@@ -85,8 +96,10 @@ namespace MedicalResearch.VisitData.StoreAccess {
   public class TreatmentStore : ModelVsEntityRepository<Treatment, MedicalResearch.VisitData.Persistence.TreatmentEntity, Guid>, ITreatmentStore {
 
     private static EfRepository<MedicalResearch.VisitData.Persistence.TreatmentEntity, Guid> CreateInnerEfRepo() {
-      var context = new MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext();
-      return new EfRepository<MedicalResearch.VisitData.Persistence.TreatmentEntity, Guid>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        MedicalResearch.VisitData.Persistence.EF.VisitDataDbContext
+      >();
+      return new EfRepository<MedicalResearch.VisitData.Persistence.TreatmentEntity, Guid>(dbContextInstanceProvider);
     }
 
     public TreatmentStore() : base(

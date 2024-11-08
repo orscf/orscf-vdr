@@ -1,119 +1,119 @@
-﻿using MedicalResearch.VisitData.Model;
-using MedicalResearch.VisitData.Persistence;
-using MedicalResearch.VisitData.Persistence.EF;
-using System;
-using System.Data.AccessControl;
-using System.Linq;
+﻿//using MedicalResearch.VisitData.Model;
+//using MedicalResearch.VisitData.Persistence;
+//using MedicalResearch.VisitData.Persistence.EF;
+//using System;
+//using System.Data.AccessControl;
+//using System.Linq;
 
-namespace MedicalResearch.VisitData {
+//namespace MedicalResearch.VisitData {
 
-  public partial class ApiService : IDataEnrollmentService {
+//  public partial class ApiService : IDataEnrollmentService {
 
-    public Guid EnrollDataForVisitExplicit(Guid targetvisitUid, string taskExecutionTitle, DateTime executionDateTimeUtc, string dataSchemaKind, string dataSchemaUrl, string dataSchemaVersion, string dataLanguage, string recordedData) {
+//    public Guid EnrollDataForVisitExplicit(Guid targetvisitUid, string taskExecutionTitle, DateTime executionDateTimeUtc, string dataSchemaKind, string dataSchemaUrl, string dataSchemaVersion, string dataLanguage, string recordedData) {
 
-      var newRecordId = Guid.NewGuid();
+//      var newRecordId = Guid.NewGuid();
       
 
-      using (VisitDataDbContext db = new VisitDataDbContext()) {
+//      using (VisitDataDbContext db = new VisitDataDbContext()) {
 
-        var targetVisit = db.Visits.Where(
-          (v) => v.VisitGuid == targetvisitUid
-        ).SingleOrDefault();
+//        var targetVisit = db.Visits.Where(
+//          (v) => v.VisitGuid == targetvisitUid
+//        ).SingleOrDefault();
 
-        if (targetVisit == null) {
-          return Guid.Empty;
-        }
-        else {
-          if (!targetVisit.ExecutionDateUtc.HasValue) {
-            targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
-          }
-          if (targetVisit.ExecutionState < 2) {
-            targetVisit.ExecutionState = 2;
-          }
-        }
+//        if (targetVisit == null) {
+//          return Guid.Empty;
+//        }
+//        else {
+//          if (!targetVisit.ExecutionDateUtc.HasValue) {
+//            targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
+//          }
+//          if (targetVisit.ExecutionState < 2) {
+//            targetVisit.ExecutionState = 2;
+//          }
+//        }
 
-        var dr = new DataRecordingEntity();
-        dr.TaskGuid = newRecordId;
-        dr.VisitGuid = targetVisit.VisitGuid;
-        dr.UniqueExecutionName = taskExecutionTitle;
-        dr.DataRecordingName = "??";
-        dr.ExecutionState = 2;
-        dr.ExecutionDateTimeUtc = executionDateTimeUtc;
-        //dr.DataSchemaKind = dataSchemaKind;
-        dr.DataSchemaUrl = dataSchemaUrl;
-        //dr.DataSchemaVersion = dataSchemaVersion;
-        //dr.DataLanguage = dataLanguage;
-        dr.RecordedData = recordedData;
-        db.DataRecordings.Add(dr);
+//        var dr = new DataRecordingEntity();
+//        dr.TaskGuid = newRecordId;
+//        dr.VisitGuid = targetVisit.VisitGuid;
+//        dr.UniqueExecutionName = taskExecutionTitle;
+//        dr.DataRecordingName = "??";
+//        dr.ExecutionState = 2;
+//        dr.ExecutionDateTimeUtc = executionDateTimeUtc;
+//        //dr.DataSchemaKind = dataSchemaKind;
+//        dr.DataSchemaUrl = dataSchemaUrl;
+//        //dr.DataSchemaVersion = dataSchemaVersion;
+//        //dr.DataLanguage = dataLanguage;
+//        dr.RecordedData = recordedData;
+//        db.DataRecordings.Add(dr);
 
-        db.SaveChanges();
-      };
+//        db.SaveChanges();
+//      };
 
-      return newRecordId;
-    }
+//      return newRecordId;
+//    }
 
-    public Guid EnrollDataForVisitImplicit(
-      Guid studyUid, string subjectIdentifier, string visitExecutionTitle,
-      string taskExecutionTitle, DateTime executionDateTimeUtc,
-      string dataSchemaKind, string dataSchemaUrl, string dataSchemaVersion,
-      string dataLanguage, string recordedData
-    ) {
+//    public Guid EnrollDataForVisitImplicit(
+//      Guid studyUid, string subjectIdentifier, string visitExecutionTitle,
+//      string taskExecutionTitle, DateTime executionDateTimeUtc,
+//      string dataSchemaKind, string dataSchemaUrl, string dataSchemaVersion,
+//      string dataLanguage, string recordedData
+//    ) {
 
-      var newRecordId = Guid.NewGuid(); ;
+//      var newRecordId = Guid.NewGuid(); ;
 
-      using (VisitDataDbContext db = new VisitDataDbContext()) {
+//      using (VisitDataDbContext db = new VisitDataDbContext()) {
 
-        var targetVisit = db.Visits.Where(
-          (v) => v.ParticipantIdentifier == subjectIdentifier && 
-          v.StudyUid == studyUid && 
-          v.UniqueExecutionName == visitExecutionTitle
-        ).SingleOrDefault();
+//        var targetVisit = db.Visits.Where(
+//          (v) => v.ParticipantIdentifier == subjectIdentifier && 
+//          v.StudyUid == studyUid && 
+//          v.UniqueExecutionName == visitExecutionTitle
+//        ).SingleOrDefault();
 
-        if (targetVisit == null) {
-          targetVisit = new VisitEntity();
-          targetVisit.VisitGuid = Guid.NewGuid();
-          targetVisit.StudyUid = studyUid;
-          targetVisit.ParticipantIdentifier = subjectIdentifier;
-          targetVisit.UniqueExecutionName = visitExecutionTitle;
-          targetVisit.VisitProcedureName = "?";
-          targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
-          targetVisit.ExecutionState = 2;
-          db.Visits.Add(targetVisit);
-        }
-        else {
-          if (!targetVisit.ExecutionDateUtc.HasValue) {
-            targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
-          }
-          if (targetVisit.ExecutionState < 2) {
-            targetVisit.ExecutionState = 2;
-          }
-        }
+//        if (targetVisit == null) {
+//          targetVisit = new VisitEntity();
+//          targetVisit.VisitGuid = Guid.NewGuid();
+//          targetVisit.StudyUid = studyUid;
+//          targetVisit.ParticipantIdentifier = subjectIdentifier;
+//          targetVisit.UniqueExecutionName = visitExecutionTitle;
+//          targetVisit.VisitProcedureName = "?";
+//          targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
+//          targetVisit.ExecutionState = 2;
+//          db.Visits.Add(targetVisit);
+//        }
+//        else {
+//          if (!targetVisit.ExecutionDateUtc.HasValue) {
+//            targetVisit.ExecutionDateUtc = executionDateTimeUtc.Date;
+//          }
+//          if (targetVisit.ExecutionState < 2) {
+//            targetVisit.ExecutionState = 2;
+//          }
+//        }
 
-        var dr = new DataRecordingEntity();
-        dr.TaskGuid = newRecordId;
-        dr.VisitGuid = targetVisit.VisitGuid;
-        dr.UniqueExecutionName = taskExecutionTitle;
-        dr.DataRecordingName = "??";
-        dr.ExecutionState = 2 ;
-        dr.ExecutionDateTimeUtc = executionDateTimeUtc;
-        //dr.DataSchemaKind = dataSchemaKind;
-        dr.DataSchemaUrl = dataSchemaUrl;
-        //dr.DataSchemaVersion = dataSchemaVersion;
-        //dr.DataLanguage = dataLanguage;
-        dr.RecordedData = recordedData;
-        dr.ExtendedMetaData = "{}";//HTODO: MUSS OPTIONAL WERDEN!!!!!!!!!!!!!
-        db.DataRecordings.Add(dr);
+//        var dr = new DataRecordingEntity();
+//        dr.TaskGuid = newRecordId;
+//        dr.VisitGuid = targetVisit.VisitGuid;
+//        dr.UniqueExecutionName = taskExecutionTitle;
+//        dr.DataRecordingName = "??";
+//        dr.ExecutionState = 2 ;
+//        dr.ExecutionDateTimeUtc = executionDateTimeUtc;
+//        //dr.DataSchemaKind = dataSchemaKind;
+//        dr.DataSchemaUrl = dataSchemaUrl;
+//        //dr.DataSchemaVersion = dataSchemaVersion;
+//        //dr.DataLanguage = dataLanguage;
+//        dr.RecordedData = recordedData;
+//        dr.ExtendedMetaData = "{}";//HTODO: MUSS OPTIONAL WERDEN!!!!!!!!!!!!!
+//        db.DataRecordings.Add(dr);
 
-        db.SaveChanges();
-      };
+//        db.SaveChanges();
+//      };
 
-      return newRecordId;
-    }
+//      return newRecordId;
+//    }
 
-    public DataEnrollmentValidationState GetValidationState(Guid dataEnrollmentUid) {
-       return DataEnrollmentValidationState.NotValidated;
-    }
+//    public DataEnrollmentValidationState GetValidationState(Guid dataEnrollmentUid) {
+//       return DataEnrollmentValidationState.NotValidated;
+//    }
 
-  }
+//  }
 
-}
+//}

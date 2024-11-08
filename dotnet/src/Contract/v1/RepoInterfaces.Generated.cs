@@ -5,6 +5,10 @@ using System.Collections.ObjectModel;
 
 namespace MedicalResearch.VisitData.StoreAccess {
 
+  public static class ApiVersion {
+    public const string SemanticVersion = "1.5.0";
+  }
+
   /// <summary> Provides CRUD access to stored DataRecordings (based on schema version '1.5.0') </summary>
   public partial interface IDataRecordingStore : System.Data.Fuse.IRepository<DataRecording, Guid> {
   }

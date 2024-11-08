@@ -38,50 +38,25 @@ namespace MedicalResearch.VisitData.WebAPI {
 
       services.AddLogging();
 
-      _ApiVersion = typeof(StudyExecutionScope).Assembly.GetName().Version;
+      _ApiVersion = Version.Parse(ApiVersion.SemanticVersion);
 
       VisitDataDbContext.Migrate();
 
       string outDir = AppDomain.CurrentDomain.BaseDirectory;
 
-      //services.AddSingleton<IDataRecordings, DataRecordingStore>();
-      //services.AddSingleton<IVisits, VisitStore>();
-      //services.AddSingleton<IDrugApplyments, DrugApplymentStore>();
-      //services.AddSingleton<IStudyEvents, StudyEventStore>();
-      //services.AddSingleton<IStudyExecutionScopes, StudyExecutionScopeStore>();
-      //services.AddSingleton<ITreatments, TreatmentStore>();
+      //var apiService = new ApiService(
+      //  _Configuration.GetValue<string>("OAuthTokenRequestUrl")
+      //);
 
-      var apiService = new ApiService(
-        _Configuration.GetValue<string>("OAuthTokenRequestUrl")
-      );
-      services.AddSingleton<IVdrApiInfoService>(apiService);
-      services.AddSingleton<IVdrEventSubscriptionService>(apiService);
-      services.AddSingleton<IVisitConsumeService>(apiService);
-      services.AddSingleton<IVisitSubmissionService>(apiService);
-      services.AddSingleton<IVisitHL7ExportService>(apiService);
-      services.AddSingleton<IVisitHL7ImportService>(apiService);
-      services.AddSingleton<IDataEnrollmentService>(apiService);
-      services.AddSingleton<IDataRecordingSubmissionService>(apiService);
-
-      services.AddSingleton<IDataRecordingStore>(new DataRecordingStore());
-      services.AddSingleton<IVisitStore>(new VisitStore());
-      services.AddSingleton<IDrugApplymentStore>(new DrugApplymentStore());
-      services.AddSingleton<IStudyEventStore>(new StudyEventStore());
-      services.AddSingleton<IStudyExecutionScopeStore>(new StudyExecutionScopeStore());
-      services.AddSingleton<ITreatmentStore>(new TreatmentStore());
+      VdrShowcaseEndpointFactory.GetFactoryMethodsPerEndpoint((contractType, factory) => {
+        services.AddSingleton(contractType, (s) => factory());
+      });
 
       services.AddDynamicUjmwControllers(
-        (c) => {
-
-          c.AddControllerFor<IVdrApiInfoService>("vdr/v2/VdrApiInfo");
-
-          c.AddControllerFor<IDataRecordingStore>("vdr/v2/store/DataRecordings");
-          c.AddControllerFor<IVisitStore>("vdr/v2/store/Visits");
-          c.AddControllerFor<IDrugApplymentStore>("vdr/v2/store/DrugApplyments");
-          c.AddControllerFor<IStudyEventStore>("vdr/v2/store/StudyEvents");
-          c.AddControllerFor<IStudyExecutionScopeStore>("vdr/v2/store/StudyExecutionScopes");
-          c.AddControllerFor<ITreatmentStore>("vdr/v2/store/Treatments");
-
+        (r) => {
+          VdrEndpointRegister.GetContractsPerEndpoint((contractType, subroute) => {
+            r.AddControllerFor(contractType, "vdr/v2/" + subroute);
+          });
         }
       );
 
@@ -93,6 +68,7 @@ namespace MedicalResearch.VisitData.WebAPI {
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Contract.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Service.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.VisitData.Service.WebAPI.xml", true);
+        c.IncludeXmlComments(outDir + "FUSE-fx.RepositoryContract.xml", true);
 
         #region bearer
 
@@ -126,22 +102,8 @@ namespace MedicalResearch.VisitData.WebAPI {
 
         c.UseInlineDefinitionsForEnums();
 
-        //c.SwaggerDoc(
-        //  "StoreAccessV1",
-        //  new OpenApiInfo {
-        //    Title = _ApiTitle + "-StoreAccess",
-        //    Version = _ApiVersion.ToString(3),
-        //    Description = "NOTE: This is not intended be a 'RESTful' api, as it is NOT located on the persistence layer and is therefore NOT focused on doing CRUD operations! This HTTP-based API uses a 'call-based' approach to known BL operations. IN-, OUT- and return-arguments are transmitted using request-/response- wrappers (see [UJMW](https://github.com/KornSW/UnifiedJsonMessageWrapper)), which are very lightweight and are a compromise for broad support and adaptability in REST-inspired technologies as well as soap-inspired technologies!",
-        //    Contact = new OpenApiContact {
-        //      Name = "Open Research Study Communication Format",
-        //      Email = "info@orscf.org",
-        //      Url = new Uri("https://orscf.org")
-        //    }
-        //  }
-        //);
-
         c.SwaggerDoc(
-          "ApiV1",
+          "ApiV" + _ApiVersion.ToString(1),
           new OpenApiInfo {
             Title = _ApiTitle + "-API",
             Version = _ApiVersion.ToString(3),
@@ -189,7 +151,7 @@ namespace MedicalResearch.VisitData.WebAPI {
 
         app.UseSwagger(o => {
           //warning: needs subfolder! jsons cant be within same dir as swaggerui (below)
-          o.RouteTemplate = "docs/schema/{documentName}.{json|yaml}";
+          o.RouteTemplate = "docs/schema/{documentName}.swagger.{json|yaml}";
           //o.SerializeAsV2 = true;
         });
 
@@ -203,8 +165,7 @@ namespace MedicalResearch.VisitData.WebAPI {
           c.DocumentTitle = _ApiTitle + " - OpenAPI Definition(s)";
 
           //represents the sorting in SwaggerUI combo-box
-          c.SwaggerEndpoint("schema/ApiV1.json", _ApiTitle + "-API v" + _ApiVersion.ToString(3));
-          //c.SwaggerEndpoint("schema/StoreAccessV1.json", _ApiTitle + "-StoreAccess v" + _ApiVersion.ToString(3));
+          c.SwaggerEndpoint($"schema/ApiV{_ApiVersion.ToString(1)}.swagger.json", $"{_ApiTitle}-API v{_ApiVersion.ToString(3)}");
 
           c.RoutePrefix = "docs";
 

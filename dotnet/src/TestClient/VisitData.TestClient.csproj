@@ -31,8 +31,6 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="EntityAnnotations" Version="2.4.0.551" />
-    <PackageReference Include="kGEN.Generator" Version="1.4.2.593" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 

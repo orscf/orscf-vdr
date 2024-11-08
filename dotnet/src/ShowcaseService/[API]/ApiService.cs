@@ -19,7 +19,7 @@ namespace MedicalResearch.VisitData {
 
     public string[] GetCapabilities() {
       return new string[] {
-        VdrCapabilities.DataEnrollment
+        VdrCapabilities.VdrStoreAccess
       };
     }
 
