@@ -1,7 +1,7 @@
 {
   "DescriptionFormat": "v1.0",
   "TimestampUtc": "2024-11-03T00:00:00.0000000Z",
-  "SemanticVersion": "1.5.0",
+  "SemanticVersion": "2.0.0",
   "Entities": [
     {
       "Name": "DataRecording",

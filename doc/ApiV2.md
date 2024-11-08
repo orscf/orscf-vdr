@@ -1,5 +1,5 @@
 ﻿# DataRecordingStore
-Provides CRUD access to stored DataRecordings (based on schema version '1.5.0')
+Provides CRUD access to stored DataRecordings (based on schema version '2.0.0')
 
 ### Methods:
 
@@ -254,7 +254,7 @@ NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'
 |newKey|Guid|**IN**-Param (required)|
 **return value:** Boolean
 # VisitStore
-Provides CRUD access to stored Visits (based on schema version '1.5.0')
+Provides CRUD access to stored Visits (based on schema version '2.0.0')
 
 ### Methods:
 
@@ -509,7 +509,7 @@ NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'
 |newKey|Guid|**IN**-Param (required)|
 **return value:** Boolean
 # DrugApplymentStore
-Provides CRUD access to stored DrugApplyments (based on schema version '1.5.0')
+Provides CRUD access to stored DrugApplyments (based on schema version '2.0.0')
 
 ### Methods:
 
@@ -764,7 +764,7 @@ NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'
 |newKey|Guid|**IN**-Param (required)|
 **return value:** Boolean
 # StudyEventStore
-Provides CRUD access to stored StudyEvents (based on schema version '1.5.0')
+Provides CRUD access to stored StudyEvents (based on schema version '2.0.0')
 
 ### Methods:
 
@@ -1019,7 +1019,7 @@ NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'
 |newKey|Guid|**IN**-Param (required)|
 **return value:** Boolean
 # StudyExecutionScopeStore
-Provides CRUD access to stored StudyExecutionScopes (based on schema version '1.5.0')
+Provides CRUD access to stored StudyExecutionScopes (based on schema version '2.0.0')
 
 ### Methods:
 
@@ -1274,7 +1274,7 @@ NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'
 |newKey|Guid|**IN**-Param (required)|
 **return value:** Boolean
 # TreatmentStore
-Provides CRUD access to stored Treatments (based on schema version '1.5.0')
+Provides CRUD access to stored Treatments (based on schema version '2.0.0')
 
 ### Methods:
 

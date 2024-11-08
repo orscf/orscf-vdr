@@ -8,7 +8,7 @@
       "url": "https://orscf.org",
       "email": "info@orscf.org"
     },
-    "version": "1.5.0"
+    "version": "2.0.0"
   },
   "paths": {
     "/vdr/v2/store/DataRecording/GetOriginIdentity": {

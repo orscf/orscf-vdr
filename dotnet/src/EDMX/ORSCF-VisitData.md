@@ -4,7 +4,7 @@
 |----------|-----------------------------------------|
 |author:   |[ORSCF](https://www.orscf.org) ("Open Research Study Communication Formats") / T.Korn|
 |license:  |[Apache-2](https://choosealicense.com/licenses/apache-2.0/)|
-|version:  |1.5.0|
+|version:  |2.0.0|
 |timestamp:|2024-11-03 00:00|
 
 ### Contents
